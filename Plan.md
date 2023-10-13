@@ -15,7 +15,6 @@ d'""""""d888'                      `888
 
 ## Reminder commands:
  - Remind every
- - Remind per (Maybe move to every but with a limiter, e.g remind every monday 3 times)
  - Remind in
  - Remind at
  - List Reminders
@@ -76,13 +75,66 @@ d'""""""d888'                      `888
  - Filter remove_rule
  - Filter add_exception (user | role | channel)
  - Filter remove_exception
- - Filter import_rules (JSON)
- - Filter export_rules (JSON)
-
+ - Filter import (JSON)
+ - Filter export (JSON)
 
 ## RolePersistence commands:
+ - RolePersitence setup
+ - RolePersistence shutdown
+ - RolePersistence blacklist (Role | User)
+ - RolePersistence whitelist (Role | User)
+ - RolePersistence status
 
 ## Ticket commands:
+  (Eventually replaced by website)
+ - Ticket setup
+ - Ticket shutdown
+ - Ticket list 
 
+# Command description
 
+The following are command descriptions, as well as argument information.
 
+`[REQUIRED]` and `<OPTIONAL>` are shown as such.
+`{ARG_1} || {ARG_2}` implies that at least one of the arguments must be provided
+
+## Reminders
+
+### Remind every
+Reminds a user | role every x time. Using `1h1m1s` time format. The command args are as follows:
+```java
+/remind every ({TIMEFRAME} || {DATE} && {TIME}) [MESSAGE] <TARGET> ({OCCURENCES} || {END_DATE}) <PRIVATE> <TIMEZONE>
+``` 
+ - `TIMEFRAME` - Time format for non-datetime datetimes. E.g `1h1m1s` means 1 hour, 1 minute, 1 second in the future
+ - `DATE` - YYYYMMDD | MMDD | DD | Weekday | "day" | "hour". Either a callender date, monthly date, a day of the month, a weekday, or every day.
+ -- For a day reminder (every month on a specific day), the highest day will be selected if the original day cannot me bet. E.g: Reminders set for the 31st of the month may be set to the 30th if that month does not have 30 days, essentially being rounded down to ensure that they occur once a month. Users will be notified of this in their reminder setup message and their reminder message
+ - `TIME` : HHMM | HHMMSS time format
+ - `MESSAGE` : Reminder message
+ - `TARGET` : User | Role
+ - `OCCURENCES` : Absorbing `/remind per`, occurences allow for the reminder to be sent out an amount of times
+ - `END_DATE` : YYYYMMDD | YYYYMMDDHHMMSS
+ - `PRIVATE` : Sends reminder in DM if possible (error handling included) if True, sends in channel of command invoke if not (error handling for DM). Default true
+ - `TIMEZONE` : Adjusts the reminder datetime (if given) to the user's timezone. If a user has set a timezone, this is done automatically. Defaults to UK time if null 
+
+### Remind in
+Reminds a user | role in x amount of time. Timeframes only are used
+```java
+/remind in [TIMEFRAME] [MESSAGE] <TARGET> <PRIVATE>
+```
+ - `TIMEFRAME`: non datetime based timeframe. `1h1m1s` = 1 hour, 1 minute, 1 second in the future
+ - `MESSAGE` : Reminder message
+ - `TARGET` : User | Role
+ - `PRIVATE` : Sends reminder in DM if possible (error handling included) if True, sends in channel of command invoke if not (error handling for DM). Default true
+
+### Remind at
+Reminds a user | role at a specific datetime
+```java
+/remind at [DATETIME] [MESSAGE] <TARGET> <PRIVATE>
+```
+ - `DATETIME` : YYYYMMDDHHMM(SS) | HHMM(SS) datetime of reminder
+ - `MESSAGE` : Reminder message
+ - `TARGET` : User | Role
+ - `PRIVATE` : Sends reminder in DM if possible (error handling included) if True, sends in channel of command invoke if not (error handling for DM). Default true
+
+### List reminders
+### Delete reminders
