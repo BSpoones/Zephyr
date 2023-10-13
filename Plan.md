@@ -11,11 +11,9 @@ d'""""""d888'                      `888
  Version <VERSION>                                                               
 ```
 
+# Command list:
 
-
-Zephyr command list:
-
-Reminder commands:
+## Reminder commands:
  - Remind every
  - Remind per (Maybe move to every but with a limiter, e.g remind every monday 3 times)
  - Remind in
@@ -23,7 +21,7 @@ Reminder commands:
  - List Reminders
  - Delete Reminder
  
-Logging commands:
+## Logging commands:
  - Logging setup
  - Logging shutdown
  - Logging toggle - Toggles logging on the channel itself / server-wide
@@ -34,7 +32,7 @@ Logging commands:
  - Logging import (JSON)
  - Logging export (JSON)
 
-Non-cog commands:
+## Non-cog commands:
  - Calculate
  - Big
  - Coinflip
@@ -47,18 +45,18 @@ Non-cog commands:
  - Banall
  - Purge
 
-Bot info commands:
+## Bot info commands:
  - Bot info
  - Bot ping
  - Bot set_status
  - Bot shutdown
  - Bot uptime
 
-Command commands:
+## Command commands:
  - Command logs
  - Command leaderboard
 
-AutoPurge commands:
+## AutoPurge commands:
  - AutoPurge setup
  - AutoPurge shutdown
  - AutoPurge edit
@@ -67,11 +65,11 @@ AutoPurge commands:
  - AutoPurge import (JSON)
  - AutoPurge export (JSON)
 
-Archive commands:
+## Archive commands:
  - Archive server
  - Archive channel
 
-Filter commands:
+## Filter commands:
  - Filter setup
  - Filter shutdown
  - Filter add_rule
@@ -82,9 +80,9 @@ Filter commands:
  - Filter export_rules (JSON)
 
 
-RolePersistence commands:
+## RolePersistence commands:
 
-Ticket commands:
+## Ticket commands:
 
 
 
