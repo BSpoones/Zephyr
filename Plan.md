@@ -99,6 +99,11 @@ The following are command descriptions, as well as argument information.
 `{ARG_1} || {ARG_2}` implies that at least one of the arguments must be provided
 
 ## Reminders
+Send custom reminders to a user or role. 
+
+Each reminder has a unique 4 character, BASE-36 ID, allowing for 1,679,616 reminders at once (36^4).
+
+An asyncronous scheduler will be used in combination with a CronTrigger to send reminders that are both repeating and singular. When the bot runs & every day, Zephyr will add all applicable events to the scheduler (only adding reminders that will occur on that day for optimisations sake)
 
 ### Remind every
 Reminds a user | role every x time. Using `1h1m1s` time format. The command args are as follows:
@@ -137,4 +142,15 @@ Reminds a user | role at a specific datetime
  - `PRIVATE` : Sends reminder in DM if possible (error handling included) if True, sends in channel of command invoke if not (error handling for DM). Default true
 
 ### List reminders
+Lists all reminders for a user | role
+```java
+/list_reminders <SERVER_ONLY>
+```
+ - `SERVER_ONLY` - Show reminders for just that server instead of bot-wide? Default false, non-server reminders will return an ephemeral message
+
 ### Delete reminders
+Deletes a reminder
+```java
+/delete_reminder [REMINDER_ID]
+```
+ - `REMINDER_ID` ID of reminder
