@@ -105,6 +105,14 @@ Each reminder has a unique 4 character, BASE-36 ID, allowing for 1,679,616 remin
 
 An asyncronous scheduler will be used in combination with a CronTrigger to send reminders that are both repeating and singular. When the bot runs & every day, Zephyr will add all applicable events to the scheduler (only adding reminders that will occur on that day for optimisations sake)
 
+When a private reminder is sent, the reminder embed is sent to the user via a DM, error handling will be in place to check if the message could be sent. If not, the reminder will be sent in the channel the command was invoked in, with a reminder to update their safety settings to allow a DM
+
+To prevent spam, all repeating reminders <24 hours in public channels will be auto set to private (unless an administrator sets it, then the limit is <5m).
+
+When deleting private reminders, only the creator OR the target of the reminder can delete the reminder. On public reminders, only the creator, target or an administrator can delete the reminder. Administrators of a server are able to view all public reminders.
+
+If a user has a public reminder on a server they have left, that reminder will be deleted, with a confirmation sent to the user that the reminder was deleted because they left the server.
+
 ### Remind every
 Reminds a user | role every x time. Using `1h1m1s` time format. The command args are as follows:
 ```java
