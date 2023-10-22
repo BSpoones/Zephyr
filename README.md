@@ -1,3 +1,7 @@
+![Zephyr logo](/assets/Zephyr%20long.png)
+
+<hr>
+
 # Zephyr
 The sixth generation multipurpose discord bot
 
