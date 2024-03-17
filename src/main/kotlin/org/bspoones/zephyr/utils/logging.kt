@@ -1,22 +1,19 @@
 package org.bspoones.zephyr.utils
 
-import org.slf4j.LoggerFactory
-import org.slf4j.Logger
+import java.util.logging.Logger
 
-class ZephyrLoggerFactory {
-    companion object{
-        private val logger = LoggerFactory.getLogger(ZephyrLoggerFactory::class.java)
+object ZLogger {
+
+    private val LOGGER = Logger.getLogger("Zephyr")
+
+    fun info(message: String) {
+        log(message)
     }
 
-    fun getLogger(name: String): ZephyrLogger{
-        return ZephyrLogger(name)
-    }
-}
 
-class ZephyrLogger(name: String){
-    private val logger: Logger = LoggerFactory.getLogger(name)
-
-    fun info(message: String){
-        logger.info(message)
+    private fun log(message: String) {
+        println(message)
     }
+
+
 }
