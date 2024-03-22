@@ -15,6 +15,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.9") // Logback logging implementation
     implementation("net.dv8tion:JDA:5.0.0-beta.17") // JDA
     implementation ("io.github.cdimascio:java-dotenv:5.2.2") // Dotenv
+    implementation(kotlin("reflect"))
 }
 
 tasks.test {
