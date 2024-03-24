@@ -1,17 +1,18 @@
 package org.bspoones.zephyr.commands
 
-import net.dv8tion.jda.api.events.interaction.command.ApplicationCommandUpdatePrivilegesEvent
 import net.dv8tion.jda.api.events.interaction.command.MessageContextInteractionEvent
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.events.interaction.command.UserContextInteractionEvent
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
-import org.bspoones.zephyr.core.command.*
-import org.bspoones.zephyr.core.command.annotations.*
-import org.bspoones.zephyr.core.command.annotations.choices.StringChoices
-import org.bspoones.zephyr.core.command.annotations.command.MessageCommand
-import org.bspoones.zephyr.core.command.annotations.command.SlashCommand
-import org.bspoones.zephyr.core.command.annotations.command.context.MessageContextCommand
-import org.bspoones.zephyr.core.command.annotations.command.context.UserContextCommand
+import org.bspoones.chloris.command.Command
+import org.bspoones.chloris.command.annotations.NSFW
+import org.bspoones.chloris.command.annotations.Option
+import org.bspoones.chloris.command.annotations.SlashCommandGroup
+import org.bspoones.chloris.command.annotations.choices.StringChoices
+import org.bspoones.chloris.command.annotations.command.MessageCommand
+import org.bspoones.chloris.command.annotations.command.SlashCommand
+import org.bspoones.chloris.command.annotations.command.context.MessageContextCommand
+import org.bspoones.chloris.command.annotations.command.context.UserContextCommand
 
 object TestCommand : Command() {
 
@@ -24,10 +25,11 @@ object TestCommand : Command() {
         event.reply("You clicked me! OW!!!").queue()
     }
     // Message Context - Right-click a discord user for this
-    @MessageContextCommand("Click me!")
+    @MessageContextCommand("Click me!222")
     fun onMessageContextCommand(
         event: MessageContextInteractionEvent
     ) {
+        println("MESSAGEDEG")
         event.reply("You clicked me! OW!!!").queue()
     }
 
@@ -47,7 +49,7 @@ object TestCommand : Command() {
         event.reply("Slash Option is: $option").queue()
     }
 
-    @MessageCommand("test")
+    @MessageCommand("tes234t")
     fun onMessageCommand(
         event: MessageReceivedEvent,
         @Option("Name", "Item name") name: String = "Default"

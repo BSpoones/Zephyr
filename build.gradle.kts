@@ -16,6 +16,7 @@ dependencies {
     implementation("net.dv8tion:JDA:5.0.0-beta.17") // JDA
     implementation ("io.github.cdimascio:java-dotenv:5.2.2") // Dotenv
     implementation(kotlin("reflect"))
+    implementation(fileTree("libs"))
 }
 
 tasks.test {
