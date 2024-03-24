@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
 import org.bspoones.zephyr.commands.TestCommand
 import org.bspoones.zephyr.core.command.Command
-import org.bspoones.zephyr.core.command.CommandRegister
+import org.bspoones.zephyr.core.command.register.CommandRegister
 import org.slf4j.Logger
 import kotlin.reflect.KClass
 
@@ -36,7 +36,7 @@ object ZephyrBot {
 
         _api.awaitReady()
 
-        CommandRegister(_api).registerCommands(commands)
+        CommandRegister.registerCommands(commands, true)
 
         _api.addEventListener(
             Command()
