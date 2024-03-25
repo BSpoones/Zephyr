@@ -5,8 +5,9 @@ import io.github.cdimascio.dotenv.Dotenv
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
-import org.bspoones.chloris.command.register.CommandRegister
 import org.bspoones.zephyr.commands.TestCommand
+import org.bspoones.zeus.Zeus
+import org.bspoones.zeus.command.CommandRegistry
 import org.slf4j.Logger
 import kotlin.reflect.KClass
 
@@ -19,28 +20,29 @@ object ZephyrBot {
     private val token = config["TOKEN"]
     private val logger: Logger = getLogger("Zephyr")
 
-//    val commands: List<KClass<*>> = listOf(
-//        TestCommand::class
-//    )
+    val commands: List<KClass<*>> = listOf(
+        TestCommand::class
+    )
 
     val allowedGuilds: List<Long> = listOf(
         937749038856536125
     )
 
     fun run() {
-        _api = JDABuilder.createDefault(
+        this._api = JDABuilder.createDefault(
             this.token,
             GatewayIntent.entries.toList()
         ).build()
 
         _api.awaitReady()
 
-        CommandRegister.setup(
+        val zeus = Zeus(
             _api,
             "!",
             guilds = allowedGuilds
         )
-        CommandRegister.registerCommands(listOf(TestCommand::class), true)
+
+        CommandRegistry.registerCommands(commands, true)
 
 
 
