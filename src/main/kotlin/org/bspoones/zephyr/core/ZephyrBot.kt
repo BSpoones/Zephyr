@@ -36,14 +36,17 @@ object ZephyrBot {
 
         _api.awaitReady()
 
-        val zeus = Zeus(
+        Zeus.setup(
             _api,
             "!",
             guilds = allowedGuilds
         )
 
-        CommandRegistry.registerCommands(commands, true)
 
+        CommandRegistry.registerCommands(
+            TestCommand::class,
+            guildOnly = true
+        )
 
 
         logger.info("Run complete")
