@@ -10,6 +10,21 @@ The sixth generation multipurpose discord bot
 
 This bot is intended to be a replacement for [Cutlery Bot](https://github.com/BSpoones/Cutlery-Bot)
 
+# Contents
+
+- [Commands](#commands)
+    - [Moderation](#moderation)
+        - [Archive](#archive)
+        - [AutoPurge](#autopurge)
+            - [AutoPurge Setup](#autopurge-setup)
+            - [AutoPurge Status](#autopurge-status)
+            - [AutoPurge Edit](#autopurge-edit)
+            - [AutoPurge Toggle](#autopurge-toggle)
+            - [AutoPurge Remove](#autopurge-remove)
+    - [BanAll](#banall)
+    - [Logging](#logging)
+    - [Purge](#purge)
+
 # Commands
 
 ## Moderation
