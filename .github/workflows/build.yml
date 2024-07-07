@@ -24,13 +24,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build --info  # Add --info to get more detailed output
-
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: zephyr
-          path: build/libs/Zephyr.jar
-
-      - name: Show generated files
-        run: ls -R build/libs  # List contents of build/libs directory
+        run: ./gradlew build
