@@ -28,3 +28,6 @@ jobs:
 
       - name: Build
         run: ./gradlew build
+
+      - name: Run scan
+        run: ./gradlew build --scan
