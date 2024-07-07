@@ -20,11 +20,17 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       # chmod the gradle file before running as sometimes actions do not have permission
-      - name: Build with Gradle
+      - name: Enable Gradle permissions
         run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew build --info  # Add --info to get more detailed output
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v2
         with:
           name: zephyr
           path: build/libs/Zephyr.jar
+
+      - name: Show generated files
+        run: ls -R build/libs  # List contents of build/libs directory
