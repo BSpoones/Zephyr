@@ -1,7 +1,7 @@
 package org.bspoones.zephyr.utils
 
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
-import org.bspoones.zeus.core.embed.AutoEmbed
+import org.bspoones.zeus.embed.AutoEmbed
 import java.awt.Color
 
 object ErrorEmbed {

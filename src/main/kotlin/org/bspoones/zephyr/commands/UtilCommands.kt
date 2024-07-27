@@ -6,10 +6,10 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import org.bspoones.zephyr.config.Test
 import org.bspoones.zephyr.utils.ErrorEmbed
 import org.bspoones.zeus.config.getConfig
-import org.bspoones.zeus.core.command.Command
-import org.bspoones.zeus.core.command.annotations.CommandOption
-import org.bspoones.zeus.core.command.annotations.command.SlashCommand
-import org.bspoones.zeus.core.embed.AutoEmbed
+import org.bspoones.zeus.command.Command
+import org.bspoones.zeus.command.annotations.CommandOption
+import org.bspoones.zeus.command.annotations.command.SlashCommand
+import org.bspoones.zeus.embed.AutoEmbed
 import org.slf4j.LoggerFactory
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
