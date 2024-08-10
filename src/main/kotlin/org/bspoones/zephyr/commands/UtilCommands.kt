@@ -3,9 +3,7 @@ package org.bspoones.zephyr.commands
 import net.dv8tion.jda.api.entities.emoji.Emoji
 import net.dv8tion.jda.api.entities.emoji.EmojiUnion
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
-import org.bspoones.zephyr.config.Test
-import org.bspoones.zephyr.utils.ErrorEmbed
-import org.bspoones.zeus.config.getConfig
+import org.bspoones.zephyr.utils.ErrorMessages
 import org.bspoones.zeus.command.Command
 import org.bspoones.zeus.command.annotations.CommandOption
 import org.bspoones.zeus.command.annotations.command.SlashCommand
@@ -13,7 +11,6 @@ import org.bspoones.zeus.embed.AutoEmbed
 import org.slf4j.LoggerFactory
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
-import kotlin.math.log
 
 const val UNICODE_EMOJI_URL = "https://raw.githubusercontent.com/discord/twemoji/master/assets/72x72/%s.png"
 
@@ -34,7 +31,7 @@ object UtilCommands : Command() {
             Emoji.Type.UNICODE -> {
                 val imageUrl = UNICODE_EMOJI_URL.format(emoji.asUnicode().asCodepoints.replace("U+", ""))
                 if (!checkUrl(imageUrl)) {
-                    ErrorEmbed.dataNotFoundEmbed("Emoji", "`$emojiInput` not found", event)
+                    ErrorMessages.dataNotFoundEmbed("Emoji", "`$emojiInput` not found", event)
                     return
                 }
                 imageUrl
@@ -50,19 +47,6 @@ object UtilCommands : Command() {
             .setImageUrl(emojiUrl)
             .replyEmbed()
     }
-
-    @SlashCommand("test", "Enlarge an emoji")
-    fun testCommand(
-        event: SlashCommandInteractionEvent,
-    ) {
-
-        AutoEmbed.Builder(event)
-            .setTitle("Reading from config file")
-            .setDescription(getConfig<Test>().t)
-            .replyEmbed()
-    }
-
-
 
     private fun checkUrl(imageUrl: String): Boolean {
         val url = URL(imageUrl)
