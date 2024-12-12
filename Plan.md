@@ -12,26 +12,44 @@ d'""""""d888'                      `888
 ```
 
 # Command list:
-
-## Reminder commands:
- - Remind every
- - Remind in
- - Remind at
- - List Reminders
- - Delete Reminder
  
-## Logging commands:
+## Logging
+
+Logging tracks events in a server. 
+
+Current strengths:
+ - Works for all events nicely
+ - By far the most used feature of CB/KBot
+
+Current drawbacks
+ - Out of date, modern events not tracked
+ - Relies heavily on database integrity. Threads don't work
+ - Not intuitive
+ - Can't manually select events
+
+Needs:
+ - Make it work with threads
+ - Optimised data structure, possibly still SQL
+ - Make it follow TOS, hand blame to server owners?
+
+Wants:
+ - Easier way to setup
+ - Easier way to add individual events. Current block is discord's 25 item limit. Possibly use suggestion provider?
+ - Website dashboard for this
+
+Actual commands:
  - Logging setup
- - Logging shutdown
- - Logging toggle - Toggles logging on the channel itself / server-wide
- - Logging blacklist/whitelist
- - Logging add_event
- - Logging remove_event
+ - Logging remove
+ - Logging event add|remove|list
+ - Logging toggle
+ - Logging ignore user|rank|channel|category
+   - Have them as a command option via enum
+ - Logging allow user|rank|channel|category
  - Logging status
  - Logging import (JSON)
  - Logging export (JSON)
 
-## Non-cog commands:
+## Non-module commands:
  - Calculate
  - Big
  - Coinflip
@@ -45,15 +63,19 @@ d'""""""d888'                      `888
  - Purge
 
 ## Bot info commands:
+
+This should be message commands, and should only apply on config approved servers AND/OR approved users
+
  - Bot info
  - Bot ping
- - Bot set_status
- - Bot shutdown
  - Bot uptime
 
+Bot shutdown and status to be moved to config based
+
 ## Command commands:
- - Command logs
  - Command leaderboard
+
+Command logs is stupid to be publicly available
 
 ## AutoPurge commands:
  - AutoPurge setup
@@ -64,23 +86,31 @@ d'""""""d888'                      `888
  - AutoPurge import (JSON)
  - AutoPurge export (JSON)
 
+Run task every minute, and find a more efficient way to do this than just force deleting all messages.
+Possible create a cache, detect a message coming in, if it's in AP channel, mark for removal?
+
+
 ## Archive commands:
  - Archive server
  - Archive channel
 
+This needs to be SQL based, possibly blob storage for files? Can this data be anonimised somehow?
+This is really handy for message delete and edit tracking, so that's a need. Make it follow TOS!!!
+
+
 ## Filter commands:
  - Filter setup
- - Filter shutdown
- - Filter add_rule
- - Filter remove_rule
- - Filter add_exception (user | role | channel)
- - Filter remove_exception
+ - Filter remove
+ - Filter rule add|remove|list
+- Logging ignore user|rank|channel|category
+    - Have them as a command option via enum
+- Logging allow user|rank|channel|category
  - Filter import (JSON)
  - Filter export (JSON)
 
 ## RolePersistence commands:
  - RolePersitence setup
- - RolePersistence shutdown
+ - RolePersistence remove
  - RolePersistence blacklist (Role | User)
  - RolePersistence whitelist (Role | User)
  - RolePersistence status
@@ -98,7 +128,7 @@ The following are command descriptions, as well as argument information.
 `[REQUIRED]` and `<OPTIONAL>` are shown as such.
 `{ARG_1} || {ARG_2}` implies that at least one of the arguments must be provided
 
-## Reminders
+# Reminders
 Send custom reminders to a user or role. 
 
 Each reminder has a unique 4 character, BASE-36 ID, allowing for 1,679,616 reminders at once (36^4).
