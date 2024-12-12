@@ -10,72 +10,74 @@ The sixth generation multipurpose discord bot
 
 This bot is intended to be a replacement for [Cutlery Bot](https://github.com/BSpoones/Cutlery-Bot)
 
-# Contents
+<details open>
+<summary>Modules</summary>
 
-- [Commands](#commands)
-    - [Moderation](#moderation)
-        - [Archive](#archive)
-        - [AutoPurge](#autopurge)
-            - [AutoPurge Setup](#autopurge-setup)
-            - [AutoPurge Status](#autopurge-status)
-            - [AutoPurge Edit](#autopurge-edit)
-            - [AutoPurge Toggle](#autopurge-toggle)
-            - [AutoPurge Remove](#autopurge-remove)
-    - [BanAll](#banall)
-    - [Logging](#logging)
-    - [Purge](#purge)
+Below is a list of all modules in Zephyr, along with tutorials and other information.
 
-# Commands
+Some commands may have the following format:
+- 📌 Required argument
+- 🟧 Optional argument
 
-## Moderation
+Contents:
+ - [Archive](#archive)
+ - [AutoPurge](#autopurge)
+ - 
+<details> <summary>Archive</summary>
 
-### Archive
+## Archive
 
-Archive commands allow for back-ups of a channel or server. All messages are saved to a database to track message edits,
-deletions, and other logging-based purposes. Due to Discord API limitations, it is not always possible to view the
-content
-of deleted messages.
+The archive module allows for message back-ups of a channel(s) within a discord server. This is closely tied to the
+logging
+module and allows for tracking to be enabled on messages. This includes but is not limited to: message edits, message
+deletions,
+message reactions, and much more!
 
-**Usage**
 
-To archive a single channel, use the command below. This only stores messages from the given channel.
+| Type    | Command                     | Description                                 |
+|---------|-----------------------------|---------------------------------------------|
+| `SLASH` | `archive channel <channel>` | Archive a single text-based channel         | 
+| `SLASH` | `archive all`               | Archive all text-based channels in a server | 
 
-```
-/archive channel <channel>
-```
-
----
-
-To archive all channels, use the command below. This stores all messages from all text channels (including VC text
-channels
-, forums, stages, etc.).
-
-```
-/archive all
-```
+> Text based channels are all channels where messages can be sent (including voice chat text channels, forums, stages,
+> etc.)
 
 > **NOTE:** If you intend to use this bot on a public server, you **MUST** include a statement in your privacy policy
 > mentioning that user's data is stored. Failing to include a privacy policy is a violation of the terms of use for
 > Zephyr and may result in your discord server being blacklisted!
 
 ---
+</details>
 
-### AutoPurge
+<details> <summary>AutoPurge</summary>
 
-<i>**Note - This can only be used in servers**</i>
+## AutoPurge
+
+> **NOTE:** This module is only available for servers!
+
+The AutoPurge module is used to automatically delete messages older than a chosen timeframe. This can help declutter
+channels such as bot command channels. There is an option for pinned messages to be spared.
+
+Commands:
+- [Setup](#autopurge-setup)
+- [Status](#autopurge-status)
+- [Edit](#autopurge-edit)
+- [Toggle](#autopurge-toggle)
+- [Remove](#autopurge-remove)
+- [Export](#autopurge-export)
+- [Import](#autopurge-import)
+
 
 #### AutoPurge Setup
 
-AutoPurge allows for messages older than a chosen timeframe to be deleted. This can help declutter channels such as
-bot command channels. Pinned messages can optionally be kept.
-
-**Usage**
-
-To set up AutoPurge in a channel, use the AutoPurge setup command:
+AutoPurge can be applied to multiple channels at the same time, meaning you have to create an AutoPurge instance for each
+channel you want to use it in. To set up AutoPurge in a channel, use the AutoPurge setup command:
 
 ```
 /autopurge setup <cutoff> [channel] [ignore_pinned]
 ```
+
+// TODO -> IMAGE
 
 - 📌 Cutoff: How long should a message stay on the channel for? TODO LINK
 - 🟧 Channel: Which channel should AutoPurge be setup in? This defaults to the current channel
@@ -88,7 +90,7 @@ To set up AutoPurge in a channel, use the AutoPurge setup command:
 To retrieve the status of an AutoPurge instance, use the AutoPurge status command:
 
 ```
-/autopurge status [chanell]
+/autopurge status [channel]
 ```
 
 - 🟧 Channel: Which channel should AutoPurge be setup in? This defaults to the current channel
@@ -102,7 +104,7 @@ TODO >> Show image of status
 To edit the AutoPurge instance, use the AutoPurge edit command:
 
 ```
-/autopurge edit [cutoff] [ignore_pinned]
+/autopurge edit {cutoff} {ignore_pinned}
 ```
 
 - 🟧 Cutoff: How long should a message stay on the channel for? TODO LINK
@@ -118,7 +120,7 @@ If AutoPurge needs to be disabled for a while, or re-enabled after disabling, us
 /autopurge toggle [channel]
 ```
 
-- 🟧 Channel: Which channel should AutoPurge be setup in? This defaults to the current channel
+- 🟧 Channel: Which channel should AutoPurge be toggled in? This defaults to the current channel
 
 ---
 
@@ -130,10 +132,36 @@ If AutoPurge is no longer required on a server, use AutoPurge remove to remove a
 /autopurge remove [channel]
 ```
 
-- 🟧 Channel: Which channel should AutoPurge be setup in? This defaults to the current channel
+- 🟧 Channel: Which channel should AutoPurge be removed in? This defaults to the current channel
 
-### BanAll
+#### AutoPurge Export
 
-### Logging
+For ease of use, AutoPurge can be added to a channel via a JSON string, current AutoPurge instances can be exported and used
+elsewhere.
 
-### Purge
+```
+/autopurge export [channel]
+```
+
+- 🟧 Channel: Which channel should have its AutoPurge settings exported? This defaults to the current channel
+
+#### AutoPurge Import
+
+This allows for AutoPurge settings to be imported from a JSON string.
+
+```
+/autopurge import <json> [channel]
+```
+
+- 📌 Json: The JSON string used for the import
+- 🟧 Channel: Which channel should this apply to? This defaults to the current channel
+
+
+</details>
+
+## BanAll
+
+## Logging
+
+## Purge
+</details>
