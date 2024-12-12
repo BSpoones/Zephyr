@@ -121,6 +121,13 @@ This is really handy for message delete and edit tracking, so that's a need. Mak
  - Ticket shutdown
  - Ticket list 
 
+## Minecraft commands:
+ - MCStatus
+   - setup
+   - remove
+   - edit [ip] [port] [description]
+   - status
+
 # Command description
 
 The following are command descriptions, as well as argument information.
